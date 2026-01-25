@@ -24,8 +24,9 @@
 ####################################################################################
 
 import sys
+from collections import deque
 
-deque = [] # 정수 저장 덱
+dq = deque() # 정수 저장 덱
 
 input = sys.stdin.readline 
 n = int(input()) # 입력 수 저장
@@ -34,29 +35,28 @@ for i in range(n):
     text = input()
     text = text.split() # 공백으로 명령어와 X 값 나누기
     
-    deque_len = len(deque) # deque 의 크기
+    deque_len = len(dq) # deque 의 크기
     
     command = text[0]
     if command == 'push_front' or command == 'push_back': # 명령어가 push_front 이거나 push_back 일 때 뒤에 오는 정수를 변수에 저장
         num = text[1]
+        
     if command == "push_front": # 명령어 push_front
-        deque.insert(0, num)
+        dq.appendleft(num)
     elif command == "push_back": # 명령어 push_back
-        deque.append(num)
+        dq.append(num)
     elif command == "pop_front": # 명령어 pop_front
         if deque_len == 0:
             print(-1)
         else:
-            pop_num = deque[0]
-            del deque[0]
+            pop_num = dq[0]
+            dq.popleft()
             print(pop_num)
     elif command == "pop_back": # 명령어 pop_back
         if deque_len == 0:
             print(-1)
         else:
-            pop_num = deque[deque_len-1]
-            del deque[deque_len-1]
-            print(pop_num)      
+            print(dq.pop())      
     elif command == "size": # 명령어 size
         print(deque_len)
     elif command == "empty": # 명령어 empty
@@ -68,10 +68,10 @@ for i in range(n):
         if deque_len == 0:
             print(-1)
         else:
-            print(deque[0])
+            print(dq[0])
     elif command == "back": # 명령어 back
         if deque_len == 0:
             print(-1)
         else:
-            print(deque[deque_len -1])
+            print(dq[deque_len-1])
     

@@ -18,23 +18,25 @@
 import sys
 input = sys.stdin.readline
 
+
 n = int(input()) # 얼마나 입력할건지 저장
 
 for i in range(n):
     text = input() # 문자열 저장
-    
-    num = 0 # 쌍 맞는지 확인
+    stack = []
+    vps_yn = 'y' # 쌍 맞는지 확인
     
     for j in text:
-        if num < 0: # ) 가 먼저 나오는 경우는 모양이 올바를 수 없으므로 break
-            break
-        else:
-            if j == '(': # ( 가 나오면 num+1
-                num = num+1
-            elif j == ')': # ) 가 나오면 num-1
-                num = num-1
+        if j == '(': # ( 가 나오면 +1
+            stack.append('1')
+        elif j == ')': # ) 가 나오면 -1
+            if len(stack) == 0: # pop 해야하는데 리스트에 아무것도 없으면 VPS가 아님
+                vps_yn = 'n'
+                break
+            else:
+                pop_num = stack.pop()
         
-    if num == 0: # 왼쪽 괄호와 오른쪽 괄호의 수가 일치한지 확인
+    if len(stack) == 0 and vps_yn == 'y': # 왼쪽 괄호와 오른쪽 괄호의 수가 일치한지 확인
         print("YES")
     else:
         print("NO")

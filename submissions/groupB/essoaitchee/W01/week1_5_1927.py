@@ -33,21 +33,9 @@ for i in range(n):
         if len_heap == 0: # heap에 아무것도 없으면 0 출력
             print(0)
         else: # heap이 빈 리스트가 아닐 때
-            ### heapq 몰랐을 때 ###
-            # num = heap[0] # num에 배열의 첫번째 값을 먼저 넣기
-            # num_idx = 0
-            # for idx, j in enumerate(heap): # 리스트 안에 들어있는 정수 비교
-            #     if j <= num: # 더 작은지 비교해서 작을 경우에만 연산 수행
-            #         num = j # 작은 값 저장
-            #         num_idx = idx # 작은 값의 인덱스 저장
-
-            # del heap[num_idx]
-            # print(num)
             print(heapq.heappop(heap))  # 최솟값 꺼내기
                     
     elif num > 0: # 입력값이 양수일 때
-        ### heapq 몰랐을 때 ###
-        # heap.append(num) # heap에 추가
         heapq.heappush(heap, num)  # heap에 추가 (자동 정렬)
         
         
