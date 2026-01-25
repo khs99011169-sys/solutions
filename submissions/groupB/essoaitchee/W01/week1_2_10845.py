@@ -23,7 +23,7 @@
 
 import sys 
 
-queue = []
+queue = [] # 정수 저장 list
 
 input = sys.stdin.readline
 n = int(input()) # 입력

@@ -21,10 +21,10 @@
  
  
 import sys
-input = sys.stdin.readline
 
 stack = [] # 정수 저장
 
+input = sys.stdin.readline # 빠른 입력 (시간 초과 방지)
 n = int(input()) # 입력
 num = 0 # push 뒤에 올 숫자
 
